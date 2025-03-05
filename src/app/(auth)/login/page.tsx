@@ -130,7 +130,7 @@ function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
-                    className="w-full rounded-lg p-2 pe-12 text-md border border-gray-400 focus:outline-none px-10"
+                    className="w-full rounded-lg p-2 pe-12 text-md border border-gray focus:outline-none px-10"
                     placeholder="example@ex.com"
                   />
                   <span className="absolute inset-y-4 start-0 grid place-content-center px-4">
@@ -158,7 +158,7 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
-                    className="w-full rounded-lg p-2 pe-12 text-md border border-gray-400 focus:outline-none px-10"
+                    className="w-full rounded-lg p-2 pe-12 text-md border border-gray focus:outline-none px-10"
                     placeholder="***********"
                   />
                   <span className="absolute inset-y-4 start-0 grid place-content-center px-4">
@@ -184,7 +184,7 @@ function Login() {
                 ) : (
                   <button
                     type="submit"
-                    className="items-center gap-2 rounded-md bg-[#ff4c46] border   hover:border-[#ff4c46] hover:text-[#ff4c46] hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow w-full transition-all duration-300 cursor-pointer"
+                    className="items-center gap-2 rounded-md bg-primary border   hover:border-primary hover:text-primary hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow w-full transition-all duration-300 cursor-pointer"
                   >
                     {/* {t("button")} */} Submit
                   </button>
@@ -244,7 +244,7 @@ function Login() {
                 onClick={initiateGoogleLogin}
                 // onClick={handleLoginByGoogle}
 
-                className="flex-1  mx-2  rounded-lg shadow-md border border-gray-400 flex justify-center md:px-12 py-3 text-sm font-medium hover:shadow-xl cursor-pointer"
+                className="flex-1  mx-2  rounded-lg shadow-md border border-gray flex justify-center md:px-12 py-3 text-sm font-medium hover:shadow-xl cursor-pointer"
               >
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M23.1666 12.2326C23.1666 11.3693 23.0951 10.7393 22.9404 10.0859H12.8809V13.9826H18.7856C18.6666 14.9509 18.0237 16.4093 16.5951 17.3892L16.5751 17.5197L19.7557 19.9344L19.9761 19.9559C21.9999 18.1242 23.1666 15.4292 23.1666 12.2326Z" fill="#4285F4" />
@@ -261,7 +261,7 @@ function Login() {
                 Don't have an Account? {" "}
                 <Link
                   href={`/register`}
-                  className="text-[#ff4c46] "
+                  className="text-primary "
                 >Sign up
                 </Link>
               </span>

@@ -9,6 +9,7 @@ import { setCookie } from "nookies";
 import { toast } from 'react-toastify';
 import Spinner from "@/app/_components/Spinner";
 import CopyRights from "@/app/_components/CopyRights";
+import ButtonFill from "@/app/_components/ButtonFill";
 // import { useTranslations } from "next-intl";
 // import useCurrentLang from "@/app/_hooks/useCurrentLang";
 // import { useSession, signIn, signOut } from "next-auth/react";
@@ -182,12 +183,13 @@ function Login() {
                 {isLoading ? (
                   <Spinner />
                 ) : (
-                  <button
-                    type="submit"
-                    className="items-center gap-2 rounded-md bg-primary border   hover:border-primary hover:text-primary hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow w-full transition-all duration-300 cursor-pointer"
-                  >
-                    {/* {t("button")} */} Submit
-                  </button>
+                  // <button
+                  //   type="submit"
+                  //   className="items-center gap-2 rounded-md bg-primary border   hover:border-primary hover:text-primary hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow w-full transition-all duration-300 cursor-pointer"
+                  // >
+                  //   {/* {t("button")} */} Submit
+                  // </button>
+                  <ButtonFill title="Submit"/>
                 )}
               </div>
             </form>

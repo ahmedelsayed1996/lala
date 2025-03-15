@@ -4,9 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify';
-import Spinner from "../../../_components/Spinner";
-import useCurrentLang from "@/app/_hooks/useCurrentLang";
-import { useTranslations } from "next-intl";
+import Spinner from "@/app/_components/Spinner";
+import ButtonFill from "@/app/_components/ButtonFill";
+import CopyRights from "@/app/_components/CopyRights";
+// import Spinner from "../../../_components/Spinner";
+// import useCurrentLang from "@/app/_hooks/useCurrentLang";
+// import { useTranslations } from "next-intl";
 
 
 function NewPassword() {
@@ -16,9 +19,9 @@ function NewPassword() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const language = useCurrentLang();
-  const t = useTranslations("changePassword");
-   const i = useTranslations("imageWords");
+  // const language = useCurrentLang();
+  // const t = useTranslations("changePassword");
+  //  const i = useTranslations("imageWords");
   const currentYear = new Date().getFullYear();
   const handleNewPassword = async (eve: React.FormEvent) => {
     eve.preventDefault();
@@ -28,12 +31,12 @@ function NewPassword() {
 
     // Validate inputs
     if (!password || !repetPassword) {
-      setError("يرجى ملء جميع الحقول.");
+      setError("All Field is Required");
       return;
     }
 
     if (password !== repetPassword) {
-      setError("كلمتا المرور غير متطابقتين.");
+      setError("Your Password Is not Matching");
       return;
     }
     const code = localStorage.getItem("uniqueNumber");
@@ -55,23 +58,27 @@ function NewPassword() {
       // Handle success (e.g., show a success message, redirect, etc.)
       const result = await response.json();
       toast.success(result.message);
-      router.push(`/${language}/login`);
+      router.push(`/login`);
     } catch (error) {
-      setError("حدث خطأ أثناء تغيير كلمة المرور.");
+      setError("Some thing Wrong Please Try again Later");
     }
   };
   return (
     <section className="md:bg-secondColor md:p-7 sm:bg-white">
-      <div className="lg:grid  lg:grid-cols-12 bg-white">
+      <div className="bg-white">
         <main className="flex items-center justify-center md:px-8 md:py-3 sm:px-12 lg:col-span-7 lg:px-6 lg:pt-12 xl:col-span-6 bg-secondColor ">
           {/* First Step */}
           <div className="max-w-xl lg:max-w-3xl bg-white p-4 rounded-2xl">
             <div className="flex justify-center items-center">
-              <Image src="/logo.svg" width={80} height={80} alt="Logo" />
+              <Image src="/large.png" width={80} height={80} alt="Logo" />
             </div>
 
-            <p className="text-[#141522] text-xl mt-3">{t("massage")}</p>
-            <p className="text-[#6C7278] text-sm mt-1">{t("massage2")}</p>
+            <p className="text-[#141522] text-xl mt-3">
+              {/* {t("massage")} */}massage
+              </p>
+            <p className="text-[#6C7278] text-sm mt-1">
+              {/* {t("massage2")} */}massage2
+              </p>
 
             <form onSubmit={handleNewPassword} className="mt-3 grid grid-cols-6 gap-6">
               {error && <p className="col-span-6 text-red-500 text-start">{error}</p>}
@@ -81,7 +88,7 @@ function NewPassword() {
                   htmlFor="password"
                   className="block text-sm font-semibold text-black"
                 >
-                  {t("massage3")}
+                  {/* {t("massage3")} */}massage3
                 </label>
 
                 <div className="relative mt-2">
@@ -111,7 +118,7 @@ function NewPassword() {
                   htmlFor="repetpassword"
                   className="block text-sm font-semibold text-black"
                 >
-                  {t("massage4")}
+                  {/* {t("massage4")} */}massage4
                 </label>
 
                 <div className="relative mt-2">
@@ -138,12 +145,7 @@ function NewPassword() {
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 text-center">
 
-                {isLoading ? <Spinner /> : <button
-                  type="submit"
-                  className="items-center gap-2 rounded-md bg-primary border hover:border-primary hover:text-primary hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow  w-full"
-                >
-                  {t("massage5")}
-                </button>}
+                {isLoading ? <Spinner /> : <ButtonFill title="Submit"/>}
               </div>
             </form>
 
@@ -152,20 +154,7 @@ function NewPassword() {
                 © 2024 All rights reserved.<a href="#" className="text-primary ">Privacy Policy</a> | <a href="#" className="text-primary ">Terms and Conditions</a>
               </span>
             </div> */}
-            <div className="col-span-6 sm:col-span-6 mt-9 mb-2 text-center">
-              <span className="shrink-0 px-6 text-[#6C7278]">
-                {t("rightsSave")} {currentYear}
-                <Link href={`/${language}/privacy-policy`} className="text-primary ">
-                  {" "}
-                  {t("privacyPolicy")}{" "}
-                </Link>{" "}
-                |{" "}
-                <Link href={`/${language}/terms-and-conditions`} className="text-primary ">
-                  {" "}
-                  {t("termsConditions")}{" "}
-                </Link>
-              </span>
-            </div>
+            <CopyRights />
           </div>
 
           {/* secound Step */}
@@ -202,7 +191,7 @@ function NewPassword() {
 
         </main>
 
-        <section className="hidden md:block relative items-end  lg:col-span-5  xl:col-span-6">
+        {/* <section className="hidden md:block relative items-end  lg:col-span-5  xl:col-span-6">
           <Image
             width={800}
             height={300}
@@ -216,7 +205,7 @@ function NewPassword() {
               <p className="text-gray lg:px-16 md:px-5 mt-3 text-center" >{i("title")}</p>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     </section>
   )

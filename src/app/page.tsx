@@ -81,14 +81,14 @@ const Navbar: React.FC = () => {
           </div>
           <Button
             variant="outline"
-            onMouseEnter={(e) => (e.target.style.color = "blue")}
-            onMouseLeave={(e) => (e.target.style.color = "black")}
+            onMouseEnter={(e: any) => (e.target.style.color = "blue")}
+            onMouseLeave={(e: any) => (e.target.style.color = "black")}
           >
             Log in
           </Button>
           <Button
-          onMouseEnter={(e) => (e.target.style.color = "white")}
-          onMouseLeave={(e) => (e.target.style.color = "black")}>Sign up</Button>
+            onMouseEnter={(e: any) => (e.target.style.color = "white")}
+            onMouseLeave={(e: any) => (e.target.style.color = "black")}>Sign up</Button>
         </div>
 
         {/* Mobile Menu Button */}

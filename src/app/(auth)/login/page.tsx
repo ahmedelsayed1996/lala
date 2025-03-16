@@ -8,7 +8,7 @@ import { setCookie } from "nookies";
 
 import { toast } from 'react-toastify';
 import Spinner from "@/app/_components/Spinner";
-import CopyRights from "@/app/_components/CopyRights";
+// import CopyRights from "@/app/_components/CopyRights";
 // import { useTranslations } from "next-intl";
 // import useCurrentLang from "@/app/_hooks/useCurrentLang";
 // import { useSession, signIn, signOut } from "next-auth/react";
@@ -100,18 +100,21 @@ function Login() {
 
 
   return (
-    <section className="md:bg-secondColor p-7 sm:bg-white">
-      <div className=" bg-white">
-        <main className="flex items-center justify-center md:px-8 md:py-3 lg:col-span-7 lg:px-6 lg:pt-12 xl:col-span-6 bg-secondColor">
+    <section className="flex items-center justify-center h-screen w-full md:bg-secondColor p-7 sm:bg-white ">
+      <div className=" bg-white  ">
+        <main className="flex items-center justify-center md:px-8 md:py-1 lg:col-span-7 lg:px-6 lg:pt-12 xl:col-span-6 bg-secondColor">
           <div className="max-w-xl lg:max-w-3xl bg-white p-4 rounded-2xl">
             <div className="flex justify-center items-center">
               <Image src="/large.png" width={180} height={180} alt="Logo" />
               
             </div>
+            <div className="flex items-center justify-start pt-4">
+              <h1 className="text-3xl font-bold">Sign in</h1>
+              </div>
 
             <form
               onSubmit={handleLogin}
-              className="mt-8 grid grid-cols-6 gap-6"
+              className="mt-4 grid grid-cols-6 gap-2"
             >
               {error && (
                 <p className="col-span-6 text-red-500 text-start">{error === "Email is not verified" ? <Link href={`/verify-mail`} className="text-primary underline-offset-1 underline ">{error} Take to Verify Code</Link> : error} </p>
@@ -121,7 +124,7 @@ function Login() {
                   htmlFor="email"
                   className="block text-sm font-semibold text-black"
                 >
-                Email Address
+                Email 
                   {/* {t("email")} */}
                 </label>
                 <div className="relative mt-2">
@@ -145,13 +148,22 @@ function Login() {
               </div>
 
               <div className="col-span-6 sm:col-span-6">
-                <label
+                <div className="flex items-center justify-between"><label
                   htmlFor="password"
                   className="block text-sm font-semibold text-black"
                 >
                   {/* {t("password")} */}
                   Password
                 </label>
+                
+                  <Link
+                  href={`/forget-password`}
+                  className="text-red-500 text-base hover:underline ">
+                  Forgot password
+                </Link></div>
+                
+                
+                
                 <div className="relative mt-2 my-5">
                   <input
                     id="password"
@@ -170,12 +182,7 @@ function Login() {
                     />
                   </span>
                 </div>
-                <Link
-                  href={`/forget-password`}
-                  className="text-red-500 text-base underline"
-                >
-                  Did you Forget Your Password!
-                </Link>
+                
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 text-center">
@@ -186,18 +193,25 @@ function Login() {
                     type="submit"
                     className="items-center gap-2 rounded-md bg-primary border   hover:border-primary hover:text-primary hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow w-full transition-all duration-300 cursor-pointer"
                   >
-                    {/* {t("button")} */} Submit
+                    {/* {t("button")} */} submit
                   </button>
                 )}
+              </div>
+              <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 justify-end">
+              <Link
+                  href={`/register`}
+                  className=" text-primary hover:underlin "
+                >Sign up
+                </Link>
               </div>
             </form>
             <div className="col-span-6 sm:col-span-6 my-9">
               <span className="flex items-center">
                 <span className="h-px flex-1 bg-[#EBEBEB]"></span>
-                <span className="shrink-0 px-6 text-[#6C7278]">
+                {/* <span className="shrink-0 px-6 text-[#6C7278]"> */}
                   {/* {t("note1")} */}
-                  Register With Us Faster Via
-                </span>
+                  {/* Register With Us Faster Via
+                </span> */}
                 <span className="h-px flex-1 bg-[#EBEBEB]"></span>
               </span>
             </div>
@@ -240,7 +254,7 @@ function Login() {
                 </svg>
 
               </button>*/}
-              <button
+              {/* <button
                 onClick={initiateGoogleLogin}
                 // onClick={handleLoginByGoogle}
 
@@ -253,19 +267,29 @@ function Login() {
                   <path d="M12.8801 5.55997C14.8919 5.55997 16.2491 6.41163 17.0229 7.12335L20.0467 4.23C18.1896 2.53834 15.7729 1.5 12.8801 1.5C8.68955 1.5 5.07048 3.85665 3.30859 7.28662L6.77287 9.92332C7.642 7.39166 10.0467 5.55997 12.8801 5.55997Z" fill="#EB4335" />
                 </svg>
 
-              </button>
+              </button> */}
             </div>
-            <div className="col-span-6 sm:col-span-6 my-9 text-nowrap">
-              <span className="shrink-0 px-6 text-[#6C7278]">
+            <p className="line-clamp-6 text-base text-gray-700 px-3">
+            By selecting Sign in, I agree to <a href="#" className="text-primary hover:text-primary hover:underline 
+            ">
+            Lala
+          </a>'s Terms, including the<br />
+          <p className="text-center  text-gray-800 ">payment terms, and <a href="#" className="hover:underline text-primary hover:text-primary ">
+          Privacy Policy
+          </a></p> <br />
+</p>
+
+          <div className="text-center">
+  <a href="#" className="text-primary  hover:underline">
+  Use Social Sign In  </a>
+</div>
+            {/* <div className="col-span-6 sm:col-span-6 my-1 text-nowrap"> */}
+              {/* <span className="shrink-0 px-6 text-[#6C7278]"> */}
                 {/* {t("note2")} */}
-                Don't have an Account? {" "}
-                <Link
-                  href={`/register`}
-                  className="text-primary "
-                >Sign up
-                </Link>
-              </span>
-            </div>
+                {/* Don&apos;t have an Account? {" "}
+                
+              </span> */}
+            {/* </div> */}
             {/* <div className="col-span-6 sm:col-span-6 mt-9 mb-2 text-center">
               <span className="shrink-0 px-6 text-[#6C7278]">
               All rights reserved, LaLa ©  {currentYear}
@@ -280,7 +304,7 @@ function Login() {
                 </Link>
               </span>
             </div> */}
-            <CopyRights />
+            {/* <CopyRights /> */}
           </div>
         </main>
 

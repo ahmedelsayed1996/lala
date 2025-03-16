@@ -8,7 +8,7 @@ import { setCookie } from "nookies";
 
 import { toast } from 'react-toastify';
 import Spinner from "@/app/_components/Spinner";
-// import CopyRights from "@/app/_components/CopyRights";
+import CopyRights from "@/app/_components/CopyRights";
 // import { useTranslations } from "next-intl";
 // import useCurrentLang from "@/app/_hooks/useCurrentLang";
 // import { useSession, signIn, signOut } from "next-auth/react";
@@ -193,11 +193,11 @@ function Login() {
                     type="submit"
                     className="items-center gap-2 rounded-md bg-primary border   hover:border-primary hover:text-primary hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow w-full transition-all duration-300 cursor-pointer"
                   >
-                    {/* {t("button")} */} submit
+                    {/* {t("button")} */} Submit
                   </button>
                 )}
               </div>
-              <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 justify-end">
+              <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 justify-center">
               <Link
                   href={`/register`}
                   className=" text-primary hover:underlin "

@@ -3,10 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
-import Spinner from "../../../_components/Spinner";
+// import Spinner from "../../../_components/Spinner";
+// import useCurrentLang from "@/app/_hooks/useCurrentLang";
+// import { useTranslations } from "next-intl";
+// import ResendEmailOtp from "@/app/_components/ResendEmailOtp";
 import { toast } from 'react-toastify';
-import useCurrentLang from "@/app/_hooks/useCurrentLang";
-import { useTranslations } from "next-intl";
+import Spinner from "@/app/_components/Spinner";
+import ButtonFill from "@/app/_components/ButtonFill";
+import CopyRights from "@/app/_components/CopyRights";
 import ResendEmailOtp from "@/app/_components/ResendEmailOtp";
 
 
@@ -17,9 +21,9 @@ function VerifyMail() {
     const [otp, setOtp] = useState(["", "", "", "", "", ""]);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const language = useCurrentLang();
-    const t = useTranslations("changePassword");
-    const i = useTranslations("imageWords");
+    // const language = useCurrentLang();
+    // const t = useTranslations("changePassword");
+    // const i = useTranslations("imageWords");
     const currentYear = new Date().getFullYear();
     const [resendCode, setResendCode] = useState<boolean>(false);
     const handleChange = (index: number, value: string) => {
@@ -57,14 +61,14 @@ function VerifyMail() {
                 throw new Error(result.message);
             }
             const result = await response.json();
-            router.push(`/${language}/login`);
+            router.push(`/login`);
             console.log(result)
-            setIsLoading(false);
             toast.success(result.message);
         } catch (error: any) {
             setError(error.message);
-            setIsLoading(false);
             console.log(error.message);
+        }finally{
+            setIsLoading(false);
         }
     };
 
@@ -76,14 +80,18 @@ function VerifyMail() {
     return (
         <section className="md:bg-secondColor md:p-7 sm:bg-white">
             {resendCode ? <ResendEmailOtp resendCodeAgain={handleResendCode} /> :
-                <div className="lg:grid  lg:grid-cols-12 bg-white">
+                <div className=" bg-white">
                     <main className="flex items-center justify-center md:px-8 md:py-3 sm:px-12 lg:col-span-7 lg:px-6 lg:pt-12 xl:col-span-6 bg-secondColor ">
                         <div className="max-w-xl lg:max-w-3xl bg-white p-4 rounded-2xl">
                             <div className="flex justify-center items-center">
-                                <Image src="/logo.svg" width={80} height={80} alt="Logo" />
+                                <Image src="/large.png" width={80} height={80} alt="Logo" />
                             </div>
 
-                            <p className="text-[#6C7278] text-sm mt-32">{t("massage6")} <span className="text-red-400">{t("massage7")}</span></p>
+                            <p className="text-[#6C7278] text-sm mt-32">
+                                {/* {t("massage6")} */}massage6
+                                <span className="text-red-400">
+                                    {/* {t("massage7")} */}massage7
+                                </span></p>
 
                             <form onSubmit={verifyOtp} className="mt-8 grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-6">
@@ -103,37 +111,19 @@ function VerifyMail() {
                                         ))}
                                     </div>
                                     <p className="text-[#6C7278] text-sm mt-1">
-                                        {t("massage8")}
+                                        {/* {t("massage8")} */}massage8
                                         <span className="text-red-400 cursor-pointer"
                                             onClick={() => setResendCode(true)}>
-                                            {t("massage9")}
+                                            {/* {t("massage9")} */}massage9
                                         </span>
                                     </p>
                                 </div>
                                 <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 text-center">
-                                    {isLoading ? <Spinner /> : <button
-                                        type="submit"
-                                        className="items-center gap-2 rounded-md bg-primary border hover:border-primary hover:text-primary hover:bg-white px-5 py-2.5 text-sm font-medium text-white shadow  w-full"
-                                    >
-                                        {t("submit")}
-                                    </button>}
+                                    {isLoading ? <Spinner /> : <ButtonFill title="Submit" />}
                                 </div>
                             </form>
 
-                            <div className="col-span-6 sm:col-span-6 mt-9 mb-2 text-center">
-                                <span className="shrink-0 px-6 text-[#6C7278]">
-                                    {t("rightsSave")} {currentYear}
-                                    <Link href={`/${language}/privacy-policy`} className="text-primary ">
-                                        {" "}
-                                        {t("privacyPolicy")}{" "}
-                                    </Link>{" "}
-                                    |{" "}
-                                    <Link href={`/${language}/terms-and-conditions`} className="text-primary ">
-                                        {" "}
-                                        {t("termsConditions")}{" "}
-                                    </Link>
-                                </span>
-                            </div>
+                            <CopyRights />
                         </div>
 
 
@@ -141,7 +131,7 @@ function VerifyMail() {
 
                     </main>
 
-                    <section className="hidden md:block relative items-end  lg:col-span-5  xl:col-span-6">
+                    {/* <section className="hidden md:block relative items-end  lg:col-span-5  xl:col-span-6">
                         <Image
                             width={800}
                             height={300}
@@ -159,7 +149,7 @@ function VerifyMail() {
                                 </p>
                             </div>
                         </div>
-                    </section>
+                    </section> */}
                 </div>}
         </section>
     )

@@ -125,8 +125,8 @@ function Footer() {
                   </li>
                   <li>
                     <Link
-                      // href={`/${language}/contact`}
-                      href={`/${window.location.pathname.slice(1, 3)}/contact`}
+                      href={`/contact`}
+                      // href={`/${window.location.pathname.slice(1, 3)}/contact`}
                       className="text-gray transition hover:opacity-75"
                     >
                       {t("contact")}

@@ -23,7 +23,6 @@ function Login() {
   // const language = useCurrentLang();
   const [error, setError] = useState("");
   // const locale = useCurrentLang();
-  const currentYear = new Date().getFullYear();
 
   const router: any = useRouter();
   // const { data: session, status } = useSession();
@@ -75,25 +74,25 @@ function Login() {
 
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token: any = urlParams.get('token');
-    console.log("Token//", token);
-    if (token) {
-      setCookie(null, "token", token, {
-        maxAge: 30 * 24 * 60 * 60, // 30 يوم
-        path: "/",
-      });
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const token: any = urlParams.get('token');
+    // console.log("Token//", token);
+    // if (token) {
+    //   setCookie(null, "token", token, {
+    //     maxAge: 30 * 24 * 60 * 60, // 30 يوم
+    //     path: "/",
+    //   });
 
-      router.push(`/`);
-    }
+    //   router.push(`/`);
+    // }
 
   }, [])
 
   const initiateGoogleLogin = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/google`;
+    // window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/google`;
   };
   const initiateFacebookLogin = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/facebook`;
+    // window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/facebook`;
   };
 
   // }
@@ -106,11 +105,11 @@ function Login() {
           <div className="max-w-xl lg:max-w-3xl bg-white p-4 rounded-2xl">
             <div className="flex justify-center items-center">
               <Image src="/large.png" width={180} height={180} alt="Logo" />
-              
+
             </div>
             <div className="flex items-center justify-start pt-4">
               <h1 className="text-3xl font-bold">Sign in</h1>
-              </div>
+            </div>
 
             <form
               onSubmit={handleLogin}
@@ -124,7 +123,7 @@ function Login() {
                   htmlFor="email"
                   className="block text-sm font-semibold text-black"
                 >
-                Email 
+                  Email
                   {/* {t("email")} */}
                 </label>
                 <div className="relative mt-2">
@@ -155,15 +154,15 @@ function Login() {
                   {/* {t("password")} */}
                   Password
                 </label>
-                
+
                   <Link
-                  href={`/forget-password`}
-                  className="text-red-500 text-base hover:underline ">
-                  Forgot password
-                </Link></div>
-                
-                
-                
+                    href="/forget-password"
+                    className="text-red-500 text-base hover:underline ">
+                    Forgot password
+                  </Link></div>
+
+
+
                 <div className="relative mt-2 my-5">
                   <input
                     id="password"
@@ -182,7 +181,7 @@ function Login() {
                     />
                   </span>
                 </div>
-                
+
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 text-center">
@@ -198,8 +197,8 @@ function Login() {
                 )}
               </div>
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4 sm:col-span-6 justify-center">
-              <Link
-                  href={`/register`}
+                <Link
+                  href="/register"
                   className=" text-primary hover:underlin "
                 >Sign up
                 </Link>
@@ -209,8 +208,8 @@ function Login() {
               <span className="flex items-center">
                 <span className="h-px flex-1 bg-[#EBEBEB]"></span>
                 {/* <span className="shrink-0 px-6 text-[#6C7278]"> */}
-                  {/* {t("note1")} */}
-                  {/* Register With Us Faster Via
+                {/* {t("note1")} */}
+                {/* Register With Us Faster Via
                 </span> */}
                 <span className="h-px flex-1 bg-[#EBEBEB]"></span>
               </span>
@@ -269,24 +268,25 @@ function Login() {
 
               </button> */}
             </div>
-            <p className="line-clamp-6 text-base text-gray-700 px-3">
-            By selecting Sign in, I agree to <a href="#" className="text-primary hover:text-primary hover:underline 
+            <div className="line-clamp-6 text-base text-gray-700 px-3">
+              <span>By selecting Sign in, I agree to</span>{" "}
+              <Link href="#" className="text-primary hover:text-primary hover:underline 
             ">
-            Lala
-          </a>'s Terms, including the<br />
-          <p className="text-center  text-gray-800 ">payment terms, and <a href="#" className="hover:underline text-primary hover:text-primary ">
-          Privacy Policy
-          </a></p> <br />
-</p>
+                Lala's Terms
+              </Link>, including the<br />
+              <p className="text-center  text-gray-800 ">payment terms, and <Link href="#" className="hover:underline text-primary hover:text-primary ">
+                Privacy Policy
+              </Link></p> <br />
+            </div>
 
-          <div className="text-center">
-  <a href="#" className="text-primary  hover:underline">
-  Use Social Sign In  </a>
-</div>
+            <div className="text-center">
+              <a href="#" className="text-primary  hover:underline">
+                Use Social Sign In  </a>
+            </div>
             {/* <div className="col-span-6 sm:col-span-6 my-1 text-nowrap"> */}
-              {/* <span className="shrink-0 px-6 text-[#6C7278]"> */}
-                {/* {t("note2")} */}
-                {/* Don&apos;t have an Account? {" "}
+            {/* <span className="shrink-0 px-6 text-[#6C7278]"> */}
+            {/* {t("note2")} */}
+            {/* Don&apos;t have an Account? {" "}
                 
               </span> */}
             {/* </div> */}

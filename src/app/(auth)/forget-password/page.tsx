@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 // import Spinner from "../../../_components/Spinner";
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation';
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 // import { useTranslations } from "next-intl";
 // import useCurrentLang from "@/app/_hooks/useCurrentLang";
 import Spinner from "@/app/_components/Spinner";
@@ -12,7 +12,6 @@ import CopyRights from "@/app/_components/CopyRights";
 import ButtonFill from "@/app/_components/ButtonFill";
 
 function ForgetPassword() {
-
   // const t = useTranslations("changePassword");
   // const f = useTranslations("footer");
   // const i = useTranslations("imageWords");
@@ -23,7 +22,6 @@ function ForgetPassword() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
 
   const verifyMail = async (eve: React.FormEvent) => {
     eve.preventDefault();
@@ -36,13 +34,16 @@ function ForgetPassword() {
       return;
     }
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/forget-password`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ "email": email }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/forget-password`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        }
+      );
 
       if (!response.ok) {
         const result = await response.json();
@@ -55,46 +56,42 @@ function ForgetPassword() {
       router.push(`/verify-password`);
     } catch (error: any) {
       setError(error.message);
-    }finally{
+    } finally {
       setIsLoading(false);
-
     }
-  }
+  };
   return (
     <section className="md:bg-secondColor md:p-7 sm:bg-white">
       <div className=" bg-white">
         <main className="flex items-center justify-center md:px-8 md:py-3 sm:px-12 lg:col-span-7 lg:px-6 lg:pt-12 xl:col-span-6 bg-secondColor ">
-          <div className="max-w-xl lg:max-w-3xl bg-white p-4 rounded-2xl">
-            <div className="flex justify-center items-center">
-              <Image src="/large.png" width={80} height={80} alt="Logo" />
+          <div className="max-w-xl lg:max-w-3xl bg-white p-6 rounded-2xl">
+            <div className="flex justify-center items-center mt-2">
+              <Image src="/large.png" width={120} height={120} alt="Logo" />
             </div>
 
-            <p className="text-[#141522] text-xl mt-3">
-              {/* {t("massage")}  */}massage
-            </p>
-            <p className="text-[#6C7278] text-sm mt-1">
-              {/* {t("label")} */}label
+            <p className="text-[#141522] text-2xl mt-6 font-bold">
+              {/* {t("massage")}  */}Reset password
             </p>
 
-            <form
-              onSubmit={verifyMail}
-              className="mt-8 grid grid-cols-6 gap-6"
-            >
+            <form onSubmit={verifyMail} className="mt-8 grid grid-cols-6 gap-6">
               {error && (
                 <p className="col-span-6 text-red-500 text-start">{error}</p>
               )}
               <div className="col-span-6 sm:col-span-6">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-semibold text-black"
+                  className="block text-lg font-semibold text-black"
                 >
-                  {/* {t("email")} */}email
+                  {/* {t("email")} */}Email
                 </label>
-                <div className="relative mt-2">
+                <p className="text-[#6C7278] text-sm mt-1">
+                  {/* {t("label")} */}Enter your email below and we'll send you
+                  a code to reset your password.
+                </p>
+                <div className="relative mt-3">
                   <input
                     id="email"
                     name="email"
-
                     type="email"
                     className="w-full rounded-lg  p-2 pe-12 text-md px-10 border border-gray focus:outline-none"
                     placeholder="example@ex.com"
@@ -119,11 +116,7 @@ function ForgetPassword() {
                                 >
                                     ارسل الكود
                                 </button> */}
-                {isLoading ? (
-                  <Spinner />
-                ) : (
-                  <ButtonFill title="Send Code" />
-                )}
+                {isLoading ? <Spinner /> : <ButtonFill title="Send Code" />}
               </div>
             </form>
 
@@ -169,4 +162,4 @@ function ForgetPassword() {
   );
 }
 
-export default ForgetPassword
+export default ForgetPassword;
